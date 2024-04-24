@@ -1,0 +1,115 @@
+/* styles.css */
+body, html {
+    margin: 0;
+    padding: 0;
+    height: 100%;
+    width: 100%;
+    overflow-x: hidden;
+    font-family: Arial, sans-serif; /* Ensures font consistency */
+}
+
+.game-container {
+    display: flex;
+    flex-direction: column;
+    height: 100vh;
+}
+
+.top-panel {
+    flex: 1;
+    background-image: url('./palti.jpg');
+    background-size: cover;
+    background-position: center;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.bottom-panel {
+    flex: 1;
+    background-color: #510606;
+    color: white;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 20px; /* Adds padding for smaller screens */
+    box-sizing: border-box;
+}
+
+.form-style {
+    width: 100%;
+    max-width: 600px;
+    background-color: rgba(255, 255, 255, 0.1);
+    padding: 20px;
+    border-radius: 5px;
+    border: 1px solid black; /* Ensures visibility on all backgrounds */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Subtle shadow for depth */
+}
+
+.data-table {
+    width: 100%;
+    table-layout: fixed;
+    border-collapse: collapse;
+}
+
+.data-table th, .data-table td {
+    text-align: left;
+    padding: 8px;
+    border: 1px solid black;
+}
+
+.data-table input[type="text"] {
+    width: 100%;
+    padding: 4px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    background-color: yellow;
+}
+
+button {
+    padding: 8px 16px;
+    background-color: #ff9500;
+    color: black;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    display: block;
+    margin: 10px auto; /* Center the button */
+}
+
+/* Media Queries for smaller devices */
+@media (max-width: 768px) { /* Targeting iPads and smaller devices */
+    .form-style {
+        padding: 15px;
+        margin: 0 10px; /* Reduces margin on smaller devices for edge-to-edge design */
+    }
+
+    .data-table th, .data-table td {
+        padding: 6px; /* Smaller padding on smaller screens */
+    }
+}
+
+@media (max-width: 480px) { /* Targeting mobile phones */
+    .top-panel, .bottom-panel {
+        flex-direction: column;
+        padding: 10px;
+    }
+
+    .form-style {
+        width: 100%; /* Allows the form to take full width of the screen */
+        max-width: none;
+    }
+
+    .data-table {
+        font-size: 14px; /* Smaller font size for better readability on small screens */
+    }
+
+    .data-table input[type="text"] {
+        padding: 4px;
+        max-width: 100px; /* Ensures the input does not take too much space */
+    }
+
+    button {
+        width: 100%; /* Full-width button for easier access */
+        padding: 12px; /* Larger touch target */
+    }
+}
