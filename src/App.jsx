@@ -47,7 +47,7 @@ function FirestoreArrays() {
       return (
           <div className="game-container">
               <div className="top-panel">
-                  <img src="./palti.jpg" alt="Palti" className="background-image"/>
+                  
               </div>
               <div className="bottom-panel">
                   <form onSubmit={handleSubmit} className="form-style">

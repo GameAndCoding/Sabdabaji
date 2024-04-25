@@ -10,39 +10,43 @@ body, html {
 
 .game-container {
     display: flex;
-    flex-direction: column;
+    flex-direction: row; /* side by side panels by default */
     height: 100vh;
+    align-items: stretch; /* Ensures both panels fill the container vertically */
 }
 
 .top-panel {
-    flex: 1;
-    background-image: url('./palti.jpg');
-    background-size: cover;
-    background-position: center;
-    display: flex;
-    justify-content: center;
-    align-items: center;
+    flex: 1; /* Takes half the width on laptops/desktops */
+  
+  background: url('./palti.jpg') center center no-repeat;
+  background-color: #2f0404;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 25px; /* Adds padding for layout */
+  box-sizing: border-box;
 }
 
 .bottom-panel {
-    flex: 1;
-    background-color: #510606;
-    color: white;
+    flex: 1; /* Takes half the width on laptops/desktops */
+     background: url('./backgr1.jpg') center center no-repeat;
+    background-color: #2f0404;
     display: flex;
     justify-content: center;
     align-items: center;
-    padding: 20px; /* Adds padding for smaller screens */
+    padding: 25px; /* Adds padding for layout */
     box-sizing: border-box;
 }
 
 .form-style {
     width: 100%;
     max-width: 600px;
-    background-color: rgba(255, 255, 255, 0.1);
+    background-color: rgba(255, 255, 255, 0.01);
+    color:white;
     padding: 20px;
     border-radius: 5px;
-    border: 1px solid black; /* Ensures visibility on all backgrounds */
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Subtle shadow for depth */
+    border: 1px solid black;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
 }
 
 .data-table {
@@ -67,49 +71,44 @@ body, html {
 
 button {
     padding: 8px 16px;
-    background-color: #ff9500;
-    color: black;
+    background-color: #007bff;
+    color: white;
     border: none;
     border-radius: 4px;
     cursor: pointer;
     display: block;
-    margin: 10px auto; /* Center the button */
+    margin: 10px auto;
 }
 
-/* Media Queries for smaller devices */
-@media (max-width: 768px) { /* Targeting iPads and smaller devices */
-    .form-style {
-        padding: 15px;
-        margin: 0 10px; /* Reduces margin on smaller devices for edge-to-edge design */
+/* Media Queries for iPads and mobile devices */
+@media (max-width: 768px) {
+    .game-container {
+        flex-direction: column; /* Stacks panels on top of each other */
     }
 
-    .data-table th, .data-table td {
-        padding: 6px; /* Smaller padding on smaller screens */
-    }
-}
-
-@media (max-width: 480px) { /* Targeting mobile phones */
     .top-panel, .bottom-panel {
-        flex-direction: column;
-        padding: 10px;
+        flex: 1 0 50%; /* Each takes half of the screen height */
     }
-
-    .form-style {
-        width: 100%; /* Allows the form to take full width of the screen */
-        max-width: none;
+  .top-panel {
+      background-size: contain; /* Ensures the entire image is visible */
+  }
+  .bottom-panel {
+      background-size: contain; /* Ensures the entire image is visible */
+  }
+}
+@media (max-width: 480px) {
+    .top-panel {
+        background-size: contain; /* Ensures the entire image is visible on smaller devices */
     }
-
-    .data-table {
-        font-size: 14px; /* Smaller font size for better readability on small screens */
+    .bottom-panel {
+      background-size: contain; /* Ensures the entire image is visible on smaller devices */
     }
-
-    .data-table input[type="text"] {
-        padding: 4px;
-        max-width: 100px; /* Ensures the input does not take too much space */
+}
+@media (min-width: 768px) {
+    .top-panel {
+        background-size: contain; /* Ensures the entire image is visible on smaller devices */
     }
-
-    button {
-        width: 100%; /* Full-width button for easier access */
-        padding: 12px; /* Larger touch target */
+    .bottom-panel {
+      background-size: contain; /* Ensures the entire image is visible on smaller devices */
     }
 }
