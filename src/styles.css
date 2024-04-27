@@ -6,9 +6,11 @@ body, html {
     width: 100%;
     overflow-x: hidden;
     font-family: Arial, sans-serif; /* Ensures font consistency */
+ 
 }
 
 .game-container {
+  
     display: flex;
     flex-direction: row; /* side by side panels by default */
     height: 100vh;
@@ -18,9 +20,9 @@ body, html {
 .top-panel {
     flex: 1; /* Takes half the width on laptops/desktops */
   
-  background: url('./palti.jpg') center center no-repeat;
+ background: url('./backtop.jpg') center center no-repeat;
   background-color: #2f0404;
-  display: flex;
+  display: block;
   justify-content: center;
   align-items: center;
   padding: 25px; /* Adds padding for layout */
@@ -29,7 +31,7 @@ body, html {
 
 .bottom-panel {
     flex: 1; /* Takes half the width on laptops/desktops */
-     background: url('./backgr1.jpg') center center no-repeat;
+ background: url('./backgr1.jpg') center center no-repeat;
     background-color: #2f0404;
     display: flex;
     justify-content: center;
@@ -79,11 +81,26 @@ button {
     display: block;
     margin: 10px auto;
 }
-
+/* Define a class for styling the GameRule text */
+.game-rule {
+    font-size: 16px;    /* Set the font size */
+    color: yellow;      /* Set the font color */
+    text-align: center; /* Optional: Align the text centrally if needed */
+    padding: 5px;      /* Optional: Adds padding for better spacing */
+}
+/* Define a class for styling the GameName text */
+.game-name {
+    font-weight: bold;
+    font-size: 26px;    /* Set the font size */
+    color: white;      /* Set the font color */
+    text-align: center; /* Optional: Align the text centrally if needed */
+    padding: 5px;      /* Optional: Adds padding for better spacing */
+}
 /* Media Queries for iPads and mobile devices */
 @media (max-width: 768px) {
     .game-container {
         flex-direction: column; /* Stacks panels on top of each other */
+      
     }
 
     .top-panel, .bottom-panel {
@@ -95,16 +112,43 @@ button {
   .bottom-panel {
       background-size: contain; /* Ensures the entire image is visible */
   }
+  .game-rule {
+      font-size: 18px; /* Slightly smaller font size for tablets */
+  }
+
+  .game-name {
+      font-size: 26px; /* Slightly smaller font size for tablets */
+  }
 }
 @media (max-width: 480px) {
+    .game-container {
+        flex-direction: column; /* Stacks panels on top of each other */
+     
+    }
     .top-panel {
         background-size: contain; /* Ensures the entire image is visible on smaller devices */
     }
     .bottom-panel {
       background-size: contain; /* Ensures the entire image is visible on smaller devices */
     }
+  .game-rule {
+      font-size: 16px; /* Reduced font size for mobile devices */
+      color: #FFFF00; /* Brighter yellow for better readability under sunlight */
+      padding: 1px; /* Slightly more padding for better touch interaction */
+  }
+
+  .game-name {
+      font-size: 26px; /* Reduced font size for mobile devices */
+      color: #FFFFFF; /* Ensure the white color is maintained for consistency */
+      padding-top: 10px; /* Adjust padding for better spacing on small screens */
+      padding-bottom: 0px;
+  }
 }
 @media (min-width: 768px) {
+    .game-container {
+        flex-direction: column; /* Stacks panels on top of each other */
+     
+    }
     .top-panel {
         background-size: contain; /* Ensures the entire image is visible on smaller devices */
     }

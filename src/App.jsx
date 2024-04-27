@@ -9,7 +9,10 @@ function FirestoreArrays() {
   const [answers, setAnswers] = useState([]);
   const [userInputs, setUserInputs] = useState([]);
   const [results, setResults] = useState([]);
-
+  const [gameRule, setGameRule] = useState([]);
+  const [gameDesc, setGameDesc] = useState([]);
+  const [gameMaker, setGameMaker] = useState([]);
+  const [ruleExample, setruleExample] = useState([]);
   useEffect(() => {
     const fetchData = async () => {
       const docRef = doc(db, "GameData", "GameState");
@@ -20,9 +23,15 @@ function FirestoreArrays() {
         // Extract clues and answers using predefined keys
         const fetchedClues = [data.clue1, data.clue2, data.clue3, data.clue4];
         const fetchedAnswers = [data.ans1, data.ans2, data.ans3, data.ans4];
+        
         setClues(fetchedClues);
         setAnswers(fetchedAnswers);
-        setUserInputs(Array(fetchedClues.length).fill(""));
+        setGameRule(data.GameRule);
+        setGameDesc(data.GameDesc);
+        setruleExample(data.RuleExample);
+        setGameMaker(data.GameMaker);
+      
+ setUserInputs(Array(fetchedClues.length).fill(""));
         setResults(Array(fetchedClues.length).fill(""));
       } else {
         console.log("No such document!");
@@ -40,17 +49,21 @@ function FirestoreArrays() {
   const handleSubmit = (event) => {
     event.preventDefault();
     const newResults = userInputs.map((input, index) =>
-      input === answers[index] ? "সঠিক" : "ভুল",
+      input.trim() === answers[index].trim() ? "সঠিক" : "ভুল",
     );
     setResults(newResults);
   };
       return (
           <div className="game-container">
-              <div className="top-panel">
-                  
-              </div>
+        <div className="top-panel">
+            <p className="game-name">{gameDesc}</p> 
+            <p className="game-rule">{gameRule}</p>
+            <p className="game-rule">{ruleExample}</p>
+            <p className="game-rule">{gameMaker}</p>
+          
+        </div>
               <div className="bottom-panel">
-                  <form onSubmit={handleSubmit} className="form-style">
+              <form onSubmit={handleSubmit} className="form-style">
                       <table className="data-table">
                           <thead>
                               <tr>
