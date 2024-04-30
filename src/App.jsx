@@ -45,12 +45,40 @@ function FirestoreArrays() {
     updatedInputs[index] = value;
     setUserInputs(updatedInputs);
   };
+  const replaceUnicodeCharacters = (str) => {
+      // Remove zero-width characters
+      str = str.replace(/[\u200C\u200D]/g, '');
+      str = str.replace(/\u09F0/g, '\u09B0');
+      str = str.replace(/\u09FA/g, '\u0981');
+      str = str.replace(/\u09AF\u09BC/g, '\u09DF') 
+      // Replace specific Bengali character combinations
+      str = str.replace(/\u09AF\u09BC/g, '\u09DF') // য + ় -> য়
+               .replace(/\u09A1\u09BC/g, '\u09DC') // ড + ় -> ড়
+               .replace(/\u09A2\u09BC/g, '\u09DD'); // ঢ + ় -> ঢ়
 
+      return str;
+  };
   const handleSubmit = (event) => {
     event.preventDefault();
-    const newResults = userInputs.map((input, index) =>
-      input.trim() === answers[index].trim() ? "সঠিক" : "ভুল",
-    );
+    const newResults = userInputs.map((input, index) => {
+        // Normalize both input and answer strings to Unicode NFC (Canonical Composition)
+      const normalizedInput = replaceUnicodeCharacters(input.trim().normalize('NFC'));
+      const normalizedAnswer = replaceUnicodeCharacters(answers[index].trim().normalize('NFC'));
+      // Log both the input and answer to the console for debugging
+      console.log(`Input (Unicode): ${normalizedInput}`);
+      console.log(`Answer (Unicode): ${normalizedAnswer}`);
+      console.log("Input Unicode Points:");
+      for (const char of normalizedInput) {
+          console.log(char, char.charCodeAt(0).toString(16)); // Display character and its Unicode code point in hexadecimal
+      }
+
+      console.log("Answer Unicode Points:");
+      for (const char of normalizedAnswer) {
+          console.log(char, char.charCodeAt(0).toString(16));
+      }
+
+        return normalizedInput === normalizedAnswer ? "সঠিক" : "ভুল";
+    });
     setResults(newResults);
   };
       return (
