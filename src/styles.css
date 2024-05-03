@@ -25,8 +25,33 @@ body, html {
   display: block;
   justify-content: center;
   align-items: center;
-  padding: 25px; /* Adds padding for layout */
+  padding: 5px; /* Adds padding for layout */
   box-sizing: border-box;
+}
+.game-name-label, .game-name-dropdown {
+    display: inline-block; /* Allows the label and dropdown to sit next to each other */
+    margin-bottom: 2px; /* Adds spacing between the dropdown and subsequent elements */
+  margin-top :50px;
+  margin-left:40px;
+  margin-right:40px;
+}
+
+.game-name-label {
+    font-weight: bold; /* Makes the label stand out*/
+    alignmemt:center;
+    margin-right: 10px;/* Adds space between the label and dropdown */
+  margin-top : 150px;
+  color: yellow;
+}
+
+.game-name-dropdown {
+    padding: 5px; /* Adds padding for better touch targets */
+    font-size: 16px; /* Sets font size for readability */
+  alignmemt:center;
+
+  background-color: Maroon;
+  border-block-color :white;
+  color: white;
 }
 
 .bottom-panel {
@@ -127,6 +152,7 @@ button {
     }
     .top-panel {
         background-size: contain; /* Ensures the entire image is visible on smaller devices */
+      padding: 1px
     }
     .bottom-panel {
       background-size: contain; /* Ensures the entire image is visible on smaller devices */
@@ -140,13 +166,24 @@ button {
   .game-name {
       font-size: 26px; /* Reduced font size for mobile devices */
       color: #FFFFFF; /* Ensure the white color is maintained for consistency */
-      padding-top: 10px; /* Adjust padding for better spacing on small screens */
+      padding-top: 0px; /* Adjust padding for better spacing on small screens */
       padding-bottom: 0px;
+     margin :5px
+  }
+  .game-name-label {
+      
+      margin-bottom: 1px; 
+    margin-top :70px
+  }
+   .game-name-dropdown {
+
+      margin-bottom: 1px; 
+    margin-top :2px
   }
 }
 @media (min-width: 768px) {
     .game-container {
-        flex-direction: column; /* Stacks panels on top of each other */
+        flex-direction: row; /* Stacks panels on top of each other */
      
     }
     .top-panel {
@@ -155,4 +192,8 @@ button {
     .bottom-panel {
       background-size: contain; /* Ensures the entire image is visible on smaller devices */
     }
+  .top-panel, .bottom-panel {
+      flex: 1;
+      max-width: 50%; /* Ensures each takes up only half the width */
+  }
 }

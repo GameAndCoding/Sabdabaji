@@ -13,9 +13,11 @@ function FirestoreArrays() {
   const [gameDesc, setGameDesc] = useState([]);
   const [gameMaker, setGameMaker] = useState([]);
   const [ruleExample, setruleExample] = useState([]);
+   const [selectedGame, setSelectedGame] = useState("Palti"); // New state variable
+  
   useEffect(() => {
     const fetchData = async () => {
-      const docRef = doc(db, "GameData", "GameState");
+      const docRef = doc(db, "GameData", "Palti");
       const docSnap = await getDoc(docRef);
 
       if (docSnap.exists()) {
@@ -26,10 +28,10 @@ function FirestoreArrays() {
         
         setClues(fetchedClues);
         setAnswers(fetchedAnswers);
-        setGameRule(data.GameRule);
+        setGameRule(data.rules);
         setGameDesc(data.GameDesc);
         setruleExample(data.RuleExample);
-        setGameMaker(data.GameMaker);
+        setGameMaker(data.gameMaker);
       
  setUserInputs(Array(fetchedClues.length).fill(""));
         setResults(Array(fetchedClues.length).fill(""));
@@ -58,6 +60,29 @@ function FirestoreArrays() {
 
       return str;
   };
+
+  const handleGameNameChange = async (event) => {
+      const newGame = event.target.value;
+      setSelectedGame(newGame);
+
+      const docRef = doc(db, "GameData", newGame);
+      const docSnap = await getDoc(docRef);
+
+      if (docSnap.exists()) {
+          const data = docSnap.data();
+
+          setClues([data.clue1, data.clue2, data.clue3, data.clue4]);
+          setAnswers([data.ans1, data.ans2, data.ans3, data.ans4]);
+          setGameRule(data.rules);
+          setGameDesc(data.GameDesc);
+          setruleExample(data.RuleExample);
+          setGameMaker(data.gameMaker);
+          setUserInputs(Array(4).fill(""));
+          setResults(Array(4).fill(""));
+      } else {
+          console.log("No such document!");
+      }
+  };
   const handleSubmit = (event) => {
     event.preventDefault();
     const newResults = userInputs.map((input, index) => {
@@ -84,10 +109,17 @@ function FirestoreArrays() {
       return (
           <div className="game-container">
         <div className="top-panel">
+            <label htmlFor="game-name-select" className="game-name-label">নিচের ড্রপডাউন থেকে আপনার পছন্দের খেলাটি বেছে নিন:</label>
+            <select id="game-name-select" className="game-name-dropdown" onChange={handleGameNameChange}>
+                <option value="Palti">পাল্টি</option>
+                <option value="Murolyajakhabli">মুড়োল্যাজাখাবলি</option>
+                <option value="Parabarna">পরবর্ণ</option>
+            </select>
+
             <p className="game-name">{gameDesc}</p> 
             <p className="game-rule">{gameRule}</p>
             <p className="game-rule">{ruleExample}</p>
-            <p className="game-rule">{gameMaker}</p>
+            <p className="game-rule">খেলা সাজানো: শব্দকর্মী- {gameMaker}</p>
           
         </div>
               <div className="bottom-panel">
