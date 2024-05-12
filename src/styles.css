@@ -1,28 +1,99 @@
 /* styles.css */
+@import url('https://fonts.googleapis.com/css2?family=Hind+Siliguri&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Atma&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Tiro&display=swap');
 body, html {
     margin: 0;
     padding: 0;
     height: 100%;
     width: 100%;
     overflow-x: hidden;
-    font-family: Arial, sans-serif; /* Ensures font consistency */
- 
+    font-family: 'Atma', Arial, sans-serif;
+    
+}
+.game-logo {
+    width: 200px;
+    display: block;
+    padding: 10px;
+    margin: 0 auto; /* Centers the image horizontally */
+}
+
+.hamburger-menu {
+    color:white;
+    cursor: pointer;
+    font-size: 30px;
+    position: absolute;
+    top: 5px;
+    left: 5px;
+}
+.header {
+    display: flex;
+    justify-content: center;  
+    align-items: center;      
+    margin-bottom: 2px;   
+    background: #ffa200; 
+    color: black; 
+    font-family: 'Atma', sans-serif; 
+    padding: 2px 2px; 
+    border-radius: 2px; 
+    font-size:12px;
+    text-align: center;
+    margin: 2px auto;
+    margin-top:45px;
+    width: 100%; /* Adjust width as needed */
+    box-shadow: 0 4px 8px rgba(0,0,0,0.2); 
+}
+.landing-header {
+    display: flex;
+    justify-content: center;  
+    align-items: center;      
+    margin-bottom: 2px;   
+    background: #ffa200; 
+    color: black; 
+    font-family: 'Atma', sans-serif; 
+    padding: 2px 2px; 
+    border-radius: 2px; 
+    font-size:12px;
+    text-align: center;
+    margin: 2px;
+    margin-top:0px;
+    width: 100%; /* Adjust width as needed */
+    box-shadow: 0 4px 8px rgba(0,0,0,0.2); 
+}
+.menu {
+    position: absolute;
+    background-color: #000000;
+    color:white;
+    box-shadow: 0 4px 8px rgb(255, 255, 255,0.3);
+    padding: 10px;
+    top: 10px;
+    left: 10px;
+    border-radius: 5px;
+    z-index: 100;
+}
+
+.menu ul {
+    list-style: none;
+    padding: 10;
+}
+
+.menu li {
+    padding: 10px;
+    cursor: pointer;
 }
 
 .game-container {
   
     display: flex;
-    flex-direction: row; /* side by side panels by default */
+    flex-direction: column; /* side by side panels by default */
     height: 100vh;
-    align-items: stretch; /* Ensures both panels fill the container vertically */
+    align-items: stretch; 
+    background-color:black;
 }
 
 .top-panel {
-    flex: 1; /* Takes half the width on laptops/desktops */
-  
- background: url('./backtop.jpg') center center no-repeat;
-  background-color: #2f0404;
-  display: block;
+   
+  display: flex;
   justify-content: center;
   align-items: center;
   padding: 5px; /* Adds padding for layout */
@@ -55,14 +126,14 @@ body, html {
 }
 
 .bottom-panel {
-    flex: 1; /* Takes half the width on laptops/desktops */
- background: url('./backgr1.jpg') center center no-repeat;
-    background-color: #2f0404;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    padding: 25px; /* Adds padding for layout */
+    
+    background-color: #000000;
+    justify-self: center;
+    align-self: center;
+    padding: 10px; /* Adds padding for layout */
+    padding-top:40px;
     box-sizing: border-box;
+    font-size: 28px;
 }
 
 .form-style {
@@ -93,7 +164,8 @@ body, html {
     padding: 4px;
     border: 1px solid #ccc;
     border-radius: 4px;
-    background-color: yellow;
+    background-color: white;
+    font-size:28px;
 }
 
 button {
@@ -124,13 +196,11 @@ button {
 /* Media Queries for iPads and mobile devices */
 @media (max-width: 768px) {
     .game-container {
-        flex-direction: column; /* Stacks panels on top of each other */
+        flex-direction: column; 
       
     }
 
-    .top-panel, .bottom-panel {
-        flex: 1 0 50%; /* Each takes half of the screen height */
-    }
+    
   .top-panel {
       background-size: contain; /* Ensures the entire image is visible */
   }
@@ -147,26 +217,26 @@ button {
 }
 @media (max-width: 480px) {
     .game-container {
-        flex-direction: column; /* Stacks panels on top of each other */
+        flex-direction: column; 
      
     }
     .top-panel {
-        background-size: contain; /* Ensures the entire image is visible on smaller devices */
+        background-size: contain; 
       padding: 1px
     }
     .bottom-panel {
-      background-size: contain; /* Ensures the entire image is visible on smaller devices */
+      background-size: contain; 
     }
   .game-rule {
-      font-size: 16px; /* Reduced font size for mobile devices */
-      color: #FFFF00; /* Brighter yellow for better readability under sunlight */
-      padding: 1px; /* Slightly more padding for better touch interaction */
+      font-size: 16px; 
+      color: #FFFF00; 
+      padding: 1px; 
   }
 
   .game-name {
-      font-size: 26px; /* Reduced font size for mobile devices */
-      color: #FFFFFF; /* Ensure the white color is maintained for consistency */
-      padding-top: 0px; /* Adjust padding for better spacing on small screens */
+      font-size: 26px; 
+      color: #FFFFFF; 
+      padding-top: 0px; 
       padding-bottom: 0px;
      margin :5px
   }
@@ -182,18 +252,10 @@ button {
   }
 }
 @media (min-width: 768px) {
-    .game-container {
-        flex-direction: row; /* Stacks panels on top of each other */
-     
-    }
+   
     .top-panel {
-        background-size: contain; /* Ensures the entire image is visible on smaller devices */
+        background-size: contain; 
     }
-    .bottom-panel {
-      background-size: contain; /* Ensures the entire image is visible on smaller devices */
-    }
-  .top-panel, .bottom-panel {
-      flex: 1;
-      max-width: 50%; /* Ensures each takes up only half the width */
-  }
+    
+  
 }

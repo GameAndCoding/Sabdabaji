@@ -22,6 +22,7 @@
   },
   "dependencies": {
     "firebase": "^10.11.0",
-    "process": "^0.11.10"
+    "process": "^0.11.10",
+    "react-router-dom": "^6.23.0"
   }
 }
