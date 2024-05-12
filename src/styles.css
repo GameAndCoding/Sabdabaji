@@ -83,7 +83,7 @@ body, html {
 }
 
 .game-container {
-  
+    
     display: flex;
     flex-direction: column; /* side by side panels by default */
     height: 100vh;
@@ -93,7 +93,7 @@ body, html {
 
 .top-panel {
    
-  display: flex;
+  display: block;
   justify-content: center;
   align-items: center;
   padding: 5px; /* Adds padding for layout */
