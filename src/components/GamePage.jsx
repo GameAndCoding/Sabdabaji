@@ -1,5 +1,8 @@
 import React, { useEffect, useState } from "react";
 import { useParams } from 'react-router-dom';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faCheck, faTimes } from '@fortawesome/free-solid-svg-icons';
+import Footer from './Footer';
 import { Link, useNavigate } from 'react-router-dom';
 import { db } from "../firebase-config"; 
 import { doc, getDoc } from "firebase/firestore";
@@ -162,11 +165,8 @@ function GamePage () {
                                               size="20"
                                           />
                                       </td>
-                                      <td style={{
-                                          backgroundColor: results[index] === 'সঠিক' ? 'green' : results[index] === 'ভুল' ? 'red' : 'transparent',
-                                          color: 'white'
-                                      }}>
-                                          {results[index]}
+                                      <td >
+                                          {results[index] === 'সঠিক' ? <FontAwesomeIcon icon={faCheck} color="green" /> : results[index] === 'ভুল' ? <FontAwesomeIcon icon={faTimes} color="red" /> : ''}
                                       </td>
                                   </tr>
                               ))}
@@ -175,6 +175,7 @@ function GamePage () {
                       <button type="submit">জমা দিন</button>
                   </form>
               </div>
+               <Footer />
           </div>
       );
   }

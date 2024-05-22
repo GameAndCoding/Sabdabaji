@@ -8,7 +8,7 @@ body, html {
     height: 100%;
     width: 100%;
     overflow-x: hidden;
-    font-family: 'Atma', Arial, sans-serif;
+    font-family: 'Tiro', Arial, sans-serif;
     
 }
 .game-logo {
@@ -50,7 +50,7 @@ body, html {
     margin-bottom: 2px;   
     background: #ffa200; 
     color: black; 
-    font-family: 'Atma', sans-serif; 
+    font-family: 'Tiro', sans-serif; 
     padding: 2px 2px; 
     border-radius: 2px; 
     font-size:12px;
@@ -60,6 +60,23 @@ body, html {
     width: 100%; /* Adjust width as needed */
     box-shadow: 0 4px 8px rgba(0,0,0,0.2); 
 }
+.footer {
+    background-color: #ffa200; /* Dark background for the footer */
+    color: black;
+    padding: 10px 20px;
+    text-align: center; /* Center the icons */
+}
+
+.footer a {
+    color: black; /* White color icons */
+    margin: 0 10px; /* Space out icons */
+    transition: color 0.3s ease; /* Smooth transition for hover effect */
+}
+
+.footer a:hover {
+    color: #ccc; /* Lighter color on hover */
+}
+
 .menu {
     position: absolute;
     background-color: #000000;
@@ -89,6 +106,7 @@ body, html {
     height: 100vh;
     align-items: stretch; 
     background-color:black;
+    justify-content:space-between;
 }
 
 .top-panel {
@@ -169,13 +187,13 @@ body, html {
 }
 
 button {
-    padding: 8px 16px;
-    background-color: #007bff;
+    padding: 8px 8px;
+    background-color: black;
     color: white;
-    border: none;
-    border-radius: 4px;
+    box-shadow: 0px 0px 8px 2px white;
     cursor: pointer;
     display: block;
+    font-size:28px;
     margin: 10px auto;
 }
 /* Define a class for styling the GameRule text */

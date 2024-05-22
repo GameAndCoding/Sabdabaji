@@ -1,4 +1,5 @@
 import React from "react";
+import Footer from './Footer';
 import { Link } from "react-router-dom";
 import "./LandingStyle.css";
 import "../styles.css";
@@ -25,6 +26,7 @@ function LandingPage() {
           </li>
         ))}
       </ul>
+      <Footer />
     </div>
   );
 }
